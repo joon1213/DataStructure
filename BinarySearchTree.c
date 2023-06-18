@@ -70,6 +70,16 @@ node* thread(int data,node* root) // 순회함수
 	return q;
 }
 
+void print(node* root) // 노드 출력함수
+{
+	if ( root!=NULL )
+	{
+		printf("%d ",root->data);
+		print(root->left);
+		print(root->right);
+	}
+}
+
 int main()
 {
 	node* root;
@@ -100,6 +110,7 @@ int main()
 	ex = right(root->right->right);
 	ex->data = 16;
 
+	print(root);
 
 	return 0;
 }
