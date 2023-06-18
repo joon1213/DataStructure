@@ -4,6 +4,7 @@
 typedef struct tree{
 
 	int data;
+	int id;
 	struct tree* left;
 	struct tree* right;
 
@@ -52,12 +53,65 @@ void output(tree* root)    // 노드 출력함수
 
 }
 
+void search1(tree* root)
+{
+	if ( root!=NULL )
+	{
+		printf(" %d",root->data);
+		search1(root->left);
+		search1(root->right);
+	}
+}
+
+
+void search2(tree* root)
+{
+	if ( root!=NULL )
+	{
+		search2(root->left);
+		printf(" %d",root->data);
+		search2(root->right);
+	}
+}
+
+
+void search3(tree* root)
+{
+	if ( root!=NULL )
+	{
+		search3(root->left);
+		search3(root->right);
+		printf(" %d",root->data);
+	}
+}
+
+int search_sum(tree* root)
+{
+	int sum1=0;
+	int sum2=0;
+
+	if ( root!=NULL )
+	{
+		if ( root->left!=NULL )
+		{
+			sum1=search_sum(root->left);
+		}
+		if ( root->right!=NULL )
+		{
+			sum2=search_sum(root->right);
+		}
+	}
+
+	return sum1+sum2+root->data;
+}
+
 int main()
 {
 	tree* root;
 	tree* ex[10];
 	int i;
 	int n;
+	int id;
 
 	root=(tree*)malloc(sizeof(tree));
 	for ( i=0; i<10; i++ )
@@ -76,15 +130,17 @@ int main()
 	ex[3]=input(50,NULL,ex[6]);
 	ex[1]=input(20,ex[2],ex[3]);
 
-	scanf("%d",&n);
+	scanf("%d",&id);
 
-	if ( n>8 || n<1 )
+	if ( id>8 || id<1 )
 	{
 		printf("-1\n");
 		return 0;
 	}
 
-	output(ex[n]);
+	n=search_sum(ex[id]);
+
+	printf("%d",n);
 
 	return 0;
 }
