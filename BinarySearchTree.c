@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node{
+typedef struct node{ // 기본 노드 구조체
 	
 	int data;
 	struct node *left;
