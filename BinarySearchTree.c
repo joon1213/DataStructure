@@ -70,6 +70,47 @@ node* thread(int data,node* root) // 순회함수
 	return q;
 }
 
+node * search(int num, node* root) // 노드검색함수
+{
+	while ( root!=NULL )
+	{
+		if ( root->data > num ) 
+		{
+			root=root->left;
+		}
+		else if ( root->data == num ) return root;
+		else
+		{
+			root=root->right;
+		}
+	}
+	
+}
+
+node* maxNode(node* root) // 좌측 서브트리에서 key 값이 가장 큰 노드 반환
+{
+	node* temp=root->left;
+
+	while ( temp->right != NULL )
+	{
+		temp=temp->right;
+	}
+	
+	return temp;
+}
+
+node* minNode(node* root) // 우측 서브트리에서 key 값이 가장 작은 노드 반환
+{
+	node* temp=root->right;
+
+	while ( temp->left != NULL )
+	{
+		temp=temp->left;
+	}
+
+	return temp;
+}
+
 void print(node* root) // 노드 출력함수
 {
 	if ( root!=NULL )
