@@ -70,6 +70,23 @@ node* thread(int data,node* root) // 순회함수
 	return q;
 }
 
+node * search(int num, node* root) // 노드검색함수
+{
+	while ( root!=NULL )
+	{
+		if ( root->data > num ) 
+		{
+			root=root->left;
+		}
+		else if ( root->data == num ) return root;
+		else
+		{
+			root=root->right;
+		}
+	}
+	
+}
+
 void print(node* root) // 노드 출력함수
 {
 	if ( root!=NULL )
