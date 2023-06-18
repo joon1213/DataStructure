@@ -4,6 +4,7 @@
 typedef struct tree{
 
 	int data;
+	int id;
 	struct tree* left;
 	struct tree* right;
 
@@ -84,6 +85,26 @@ void search3(tree* root)
 	}
 }
 
+int search_sum(tree* root)
+{
+	int sum1=0;
+	int sum2=0;
+
+	if ( root!=NULL )
+	{
+		if ( root->left!=NULL )
+		{
+			sum1=search_sum(root->left);
+		}
+		if ( root->right!=NULL )
+		{
+			sum2=search_sum(root->right);
+		}
+	}
+
+	return sum1+sum2+root->data;
+}
+
 int main()
 {
 	tree* root;
@@ -109,7 +130,7 @@ int main()
 	ex[3]=input(50,NULL,ex[6]);
 	ex[1]=input(20,ex[2],ex[3]);
 
-	scanf("%d %d",&n,&id);
+	scanf("%d",&id);
 
 	if ( id>8 || id<1 )
 	{
@@ -117,18 +138,9 @@ int main()
 		return 0;
 	}
 
-	if ( n==1 )
-	{
-		search1(ex[id]);
-	}
-	if ( n==2 )
-	{
-		search2(ex[id]);
-	}
-	if ( n==3 )
-	{
-		search3(ex[id]);
-	}
+	n=search_sum(ex[id]);
+
+	printf("%d",n);
 
 	return 0;
 }
