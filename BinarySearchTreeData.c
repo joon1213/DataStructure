@@ -52,12 +52,45 @@ void output(tree* root)    // 노드 출력함수
 
 }
 
+void search1(tree* root)
+{
+	if ( root!=NULL )
+	{
+		printf(" %d",root->data);
+		search1(root->left);
+		search1(root->right);
+	}
+}
+
+
+void search2(tree* root)
+{
+	if ( root!=NULL )
+	{
+		search2(root->left);
+		printf(" %d",root->data);
+		search2(root->right);
+	}
+}
+
+
+void search3(tree* root)
+{
+	if ( root!=NULL )
+	{
+		search3(root->left);
+		search3(root->right);
+		printf(" %d",root->data);
+	}
+}
+
 int main()
 {
 	tree* root;
 	tree* ex[10];
 	int i;
 	int n;
+	int id;
 
 	root=(tree*)malloc(sizeof(tree));
 	for ( i=0; i<10; i++ )
@@ -76,15 +109,26 @@ int main()
 	ex[3]=input(50,NULL,ex[6]);
 	ex[1]=input(20,ex[2],ex[3]);
 
-	scanf("%d",&n);
+	scanf("%d %d",&n,&id);
 
-	if ( n>8 || n<1 )
+	if ( id>8 || id<1 )
 	{
 		printf("-1\n");
 		return 0;
 	}
 
-	output(ex[n]);
+	if ( n==1 )
+	{
+		search1(ex[id]);
+	}
+	if ( n==2 )
+	{
+		search2(ex[id]);
+	}
+	if ( n==3 )
+	{
+		search3(ex[id]);
+	}
 
 	return 0;
 }
