@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct tree{
+typedef struct tree{  // 기본노드 구조체
 
 	int id;
 	struct tree* left;
@@ -12,7 +12,7 @@ typedef struct tree{
 
 tree* hel;
 
-tree* getnode(int id)
+tree* getnode(int id)  // 빈노드 추가함수
 {
 	tree* ex;
 
